@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1699986008 source:/home/hizenberg/Desktop/My Own Redis/Server-Client Program/Client/Client.cpp
+	<stdint.h>
+	<netinet/ip.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<unistd.h>
+	<errno.h>
+	<arpa/inet.h>
+

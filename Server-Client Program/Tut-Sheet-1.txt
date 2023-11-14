@@ -1,0 +1,36 @@
+socket() -> this is a syscall which returns an fd.
+
+        fd - It is like a integer which is like an ID used by kernel. It is basically related
+            to kernel functionality.
+
+bind() -> It is used to bind the address to the fd.
+       -> The address is which we want to connect with.
+
+listen() -> listen helps to establish connection with that address.
+
+accept() -> when connection is made my client, it returns an fd which represents the established connection.
+
+WORKFLOW OF SERVER (PSEUDO CODE):
+
+    fd = socket();
+    bind(fd,address)
+    listen(fd)
+    while(true)
+        conn_fd = accept(fd)
+        /**************/
+            do something with conn_fd
+            doing something in this connection
+        /**************/
+        close(conn_fd)
+
+
+connect() -> take the fd from client side and make the connection from the address that
+          -> the address is of the server side.
+WORKFLOW OF CLIENT (PSEUDO CODE)
+
+    fd = socket()
+    connect(fd,address)
+    /*********/
+        doing something in the connection/
+    /*********/
+    close(fd)

@@ -1,0 +1,33 @@
+Starting of client and server.
+
+1. First we need fd using socket()
+
+    int fd = socket(AF_INET,SOCK_STREAM,0);
+
+    ->AF_INET = It is used to provide IPv4
+        NOTE: AF_INET6 = It is used to provide IPv6 or dual-stack socket.
+    ->SOCK_STREAM = It is used to set the TCP protocol.
+
+
+2. NEW SYSTEM CALL
+
+    setsocketopt()
+    -> There are various layer of network communication and each layer have various option, from which we pick one to
+        configure the network communication.
+    -> This syscall is to set those option
+
+    IMPORTANT: SO_REUSEADDR-> It is an option to reuse the same address when the process(communication) is restarted.
+        -> Risk of using it.
+         # If the previous connection using the same address didn't took all the packets and the process got closed
+           before taking it, the same address might be used by the same program with new instance of process or by another
+           program with new instance of process. This rouge packets is intented to send it to the address which is in reuse.
+           This cause problem. This problem also make it hackable.
+
+
+    NEW TERM: WILDCARD ADDRESS -> when we use sockets, the communication is design to between two process only.
+    Not allowing multicast or multiple communication. To establish this multiple communication we use wildcard address.
+    This is used on server-side program.
+
+
+3. read() and write()
+    It returns number of read and written bytes.
